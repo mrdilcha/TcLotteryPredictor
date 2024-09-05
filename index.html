@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9987UP Predictor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMRJ03uz5_UPpCiEIlqdHbnabt7eelRNgC0QZ9zod7WXUdC9sHH4EsChs&s=10" alt="9987UP Logo" class="logo">
+    
+    <h1>9987UP Predictor</h1>
+
+    <div class="input-section">
+      <label for="period">Enter 14-Digit Period Number:</label>
+      <input type="text" id="period" maxlength="14" placeholder="Enter period number">
+    </div>
+
+    <div class="button-section">
+      <button id="checkButton">Check Now</button>
+      <p id="loadingMessage"></p>
+      <p id="resultMessage"></p>
+    </div>
+
+    <div class="result-section">
+      <div class="big-small">Big</div>
+      <div class="big-small">Small</div>
+      <div class="prediction">
+        <span class="dot" id="dot1"></span>
+        <span class="dot" id="dot2"></span>
+        <span class="dot" id="dot3"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
