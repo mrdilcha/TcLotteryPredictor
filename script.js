@@ -1,20 +1,36 @@
-document.getElementById("checkButton").addEventListener("click", function () {
-  const loadingMessage = document.getElementById("loadingMessage");
-  const resultMessage = document.getElementById("resultMessage");
+document.getElementById('prediction-form').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-  // Show loading message first
-  loadingMessage.textContent = "Connecting to server...";
-  resultMessage.textContent = "";
+    const periodNumber = document.getElementById('period_number').value;
 
-  // Simulate a server delay
-  setTimeout(function () {
-    loadingMessage.textContent = "";
-    resultMessage.textContent = "Result: Period Prediction Complete!";
+    if (periodNumber.length === 14 && !isNaN(periodNumber)) {
+        const connectionStatus = document.getElementById('connection-status');
+        const predictionResult = document.getElementById('prediction-result');
+        
+        // Show "Connecting Server..." message
+        connectionStatus.textContent = "Connecting Server...";
+        predictionResult.style.display = 'none';
+        connectionStatus.style.display = 'block';
 
-    // Simulate random colors for the dots
-    const colors = ["red", "green"];
-    document.getElementById("dot1").style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    document.getElementById("dot2").style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    document.getElementById("dot3").style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-  }, 2000); // 2-second delay
+        // Wait 2 seconds before showing the result
+        setTimeout(function() {
+            const number = Math.floor(Math.random() * 10) + 1;
+            const color = Math.random() < 0.5 ? 'Red' : 'Green';
+
+            const sizeText = number <= 5 ? 'Small' : 'Big';
+
+            const colorClass = color === 'Red' ? 'red-dot' : 'green-dot';
+
+            const resultText = document.getElementById('result-text');
+            const resultDot = document.getElementById('result-dot');
+
+            resultText.textContent = sizeText;
+            resultDot.className = 'dot ' + colorClass;
+
+            connectionStatus.style.display = 'none';
+            predictionResult.style.display = 'block';
+        }, 2000);
+    } else {
+        alert('Invalid period number. Please enter a 14-digit number.');
+    }
 });
